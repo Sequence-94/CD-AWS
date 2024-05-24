@@ -215,6 +215,11 @@ This resolved the issue:
 ![Screen Shot 2024-05-24 at 15 27](https://github.com/Sequence-94/CD-AWS/assets/53806574/af211787-665e-4f2c-822f-73d22d81b021)
 
 
+Now I will create another Build Job for testing using Selenium from windows.
+It will take screenshots and upload them into s3 bucket. These are screenshots confirming that application works.
+
+
+
 
 
 
