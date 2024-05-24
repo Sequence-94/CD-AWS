@@ -185,6 +185,48 @@ I was basically updating the inbound rule for my database to allow access to the
 	Now I update the pom.xml & settings.xml file with the repository path and mirror paths.
  	
 
+	Then I create a new Build Job this is specifically for the Build&Release stage.
+ 	This stage will changed the default password and username of the database to our own from secrets
+  	It will download jdk8 with maven and all the dependencies using the buildspec file shown below:
+![Screen Shot 2024-05-24 at 13 11](https://github.com/Sequence-94/CD-AWS/assets/53806574/20d7d15a-3824-43e3-bb41-bd9a13245eb4)
+	
+
+	I need to update my SSM Parameter store with maven-central-store token
+
+	ERROR:
+ 	My VPROfILE-CODE-ADMIM user was not allowed the codeartifact:GetAuthorizationToken action and sts:GetServiceBearerToken actions so I had to update the policy to retrive the token and 	put it inside my secrets.
+![Screen Shot 2024-05-24 at 13 25](https://github.com/Sequence-94/CD-AWS/assets/53806574/17568116-30d0-4f91-8312-76335ef3e1ca)
+
+
+	After updating my parameter store with the required secrets it looks like this:
+
+![Screen Shot 2024-05-24 at 13 37](https://github.com/Sequence-94/CD-AWS/assets/53806574/c74c9115-1ce1-40d1-8867-48edf29decf4)
+
+	Now my buildspec file can use these as variables.
+
+ ERROR:
+ ![Screen Shot 2024-05-24 at 14 27](https://github.com/Sequence-94/CD-AWS/assets/53806574/7654d12e-5081-4e53-895f-83c6b8fc2eac)
+
+This error seems to suggest that I am not authorised to read from codeartifacts so I looked into my Authentication token that I read from the cli and it
+seems there is something that goes wrong when I copy and paste into SSM parameter store so instead of exporting and reading the token from cli I did it via the code: like this
+![Screen Shot 2024-05-24 at 15 26](https://github.com/Sequence-94/CD-AWS/assets/53806574/8a2623f0-346e-4ce6-a1fc-e08449dec176)
+
+This resolved the issue:
+![Screen Shot 2024-05-24 at 15 27](https://github.com/Sequence-94/CD-AWS/assets/53806574/af211787-665e-4f2c-822f-73d22d81b021)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
