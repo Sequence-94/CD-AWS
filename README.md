@@ -1,3 +1,8 @@
+
+![Continous delivery on AWS Cloud(Java App)](https://github.com/Sequence-94/CD-AWS/assets/53806574/eaaf8798-40e4-48a5-90fd-777feacdecfa)
+
+
+
 # SCENARIO:
 
 We have a Product Development Team working in an agile environment
@@ -38,7 +43,7 @@ Fault Isolation - we can easily decipher is the problem was made in the src code
 No Ops team needed
 
 
-AWS SERVICES:
+# AWS SERVICES:
 
 CODE COMMIT - version control system
 CODE ARTIFACT - maven repository for dependencies
@@ -50,7 +55,7 @@ CODEPIPELINE - integration service (paas)
 
 
 
-EXTERNAL SERVICES:
+# EXTERNAL SERVICES:
 
 SONARCLOUD - code analysis sonarqube server on the cloud.
 CHECKSTYLE - code analysis in CodeBuild 
@@ -64,9 +69,9 @@ Fast turnaround on feature changes
 Less disruptive
 
 
-FLOW OF EXECUTION:
+# FLOW OF EXECUTION:
 
-CI
+# CI
 
 Login to AWS account
 Code Commit
@@ -92,7 +97,7 @@ Create Pipeline
 	Build
 	Deploy to S3 bucket
 
-CD
+# CD
 
 Test Pipeline
 Create Beanstalk(deploy artifact) & RDS(database)
@@ -114,6 +119,49 @@ Update Pipeline
 	Build Job for Selenium test scripts
 	Upload result to s3
 Test Pipeline
+
+
+	BeanStalk Setup: Creating this is fairly easy on AWS console, click create application , I chose a name and picked Tomcat as my webserver. Eveything else it default.
+ 	Instance Type - Load Balanced , t2.micro
+  	Min instances =2
+   	Max instances =4
+	Created key-pair
+ 	Created a role for beanstalk as well
+
+  
+![Screen Shot 2024-05-24 at 08 11](https://github.com/Sequence-94/CD-AWS/assets/53806574/59d58a0a-8f2d-4e6c-be1a-3f7f3a39fc96)
+
+![Screen Shot 2024-05-24 at 08 11 - 2](https://github.com/Sequence-94/CD-AWS/assets/53806574/68696d6a-d6f9-4f6c-99f2-926ac5354dd3)
+
+![Screen Shot 2024-05-24 at 08 11 - 3](https://github.com/Sequence-94/CD-AWS/assets/53806574/50ac459a-480e-4900-af98-e7feeb6e4b4f)
+
+![Screen Shot 2024-05-24 at 08 11 - 4](https://github.com/Sequence-94/CD-AWS/assets/53806574/b5625eff-da50-4115-af4c-ce1309619bd4)
+
+	RDS Setup: 
+ 	Standard Create
+	Engine = MySQL
+ 	V5.7.44
+  	Free tier template
+   	DB name = "vprofile-cicd-mysql"
+    	Auto generate password
+     	Create new security group
+      	Initial databse name = "accounts"
+
+       Rest is defaults.
+![Screen Shot 2024-05-24 at 08 48](https://github.com/Sequence-94/CD-AWS/assets/53806574/9b7017d2-6a44-435a-89cb-a2ac5ce6fdf5)
+
+ERROR:
+![Screen Shot 2024-05-24 at 08 58](https://github.com/Sequence-94/CD-AWS/assets/53806574/f8105544-b2e9-45bd-951a-876ebc1ae203)
+
+After doing a quick google search it came to my attention that I should recreate the inbound rule from scratch by deleteing the default one I was editting:
+![Screen Shot 2024-05-24 at 09 00](https://github.com/Sequence-94/CD-AWS/assets/53806574/892c40c0-c291-418f-a2b1-a448352aa239)
+I was basically updating the inbound rule for my database to allow access to the ec2 instances created by elastic beanstalk.
+
+
+
+
+
+
 
 
 
