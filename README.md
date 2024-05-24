@@ -158,13 +158,32 @@ After doing a quick google search it came to my attention that I should recreate
 I was basically updating the inbound rule for my database to allow access to the ec2 instances created by elastic beanstalk.
 
 
+	Now I will SSH into my ec2's and from there I'll login to the rds and perform a test so I can deploy the schemas.
+ 	First I will login as Root
+  	Second I will install mysql client as well as git to clone source code where I have the SQL file
+
+    	ERROR:
+     	unable to install mysql client 
+![Screen Shot 2024-05-24 at 09 20](https://github.com/Sequence-94/CD-AWS/assets/53806574/2e2ebbc5-db5a-455d-bdc0-2abd375b2db5)
+
+      	Solution:
+       	MYSQL was not in my repository so I had to download it and install it from there.
+	
+![Screen Shot 2024-05-24 at 09 22](https://github.com/Sequence-94/CD-AWS/assets/53806574/92a1455f-5f85-4250-88cb-a2a95f0b642e)
+
+	Then after i was able to run "yum install mysql-community-client"
+![Screen Shot 2024-05-24 at 09 55](https://github.com/Sequence-94/CD-AWS/assets/53806574/20a76409-020b-42b3-841f-f782b7946aef)
 
 
 
+	So since I am able to login and execute sql commands I have a script that will create my schemas for me in github so I will 
+ 	First clone the github repo into the ec2 and use the files inside to execute the commands to create the database tables:
+  	
+![Screen Shot 2024-05-24 at 10 03](https://github.com/Sequence-94/CD-AWS/assets/53806574/7ae6b25b-a0a5-457d-a2ff-756cbe750e6f)
 
 
-
-
+	Now I update the pom.xml & settings.xml file with the repository path and mirror paths.
+ 	
 
 
 
