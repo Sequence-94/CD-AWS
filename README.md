@@ -1,4 +1,3 @@
-# CD-AWS
 # SCENARIO:
 
 We have a Product Development Team working in an agile environment
