@@ -234,6 +234,10 @@ ERROR:
 At first I couldn't login because I needed to enable stickysessions 
 ![Screen Shot 2024-05-25 at 12 34 - 2](https://github.com/Sequence-94/CD-AWS/assets/53806574/85f2a202-6942-4669-9933-dfba1bbdaa5c)
 
+SONARCLOUD RESULT:
+![Screen Shot 2024-05-25 at 12 58](https://github.com/Sequence-94/CD-AWS/assets/53806574/3b3b0054-53d0-4b41-b097-d7fdd4df1750)
+
+
 Selenium Test also took a screenshot and saved it into my s3 bucket:
 ![Screen Shot 2024-05-25 at 12 37](https://github.com/Sequence-94/CD-AWS/assets/53806574/3d4f12c7-b53a-457b-821d-0cdfc5e40c06)
 
