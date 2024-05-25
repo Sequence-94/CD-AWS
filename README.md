@@ -217,12 +217,29 @@ This resolved the issue:
 
 Now I will create another Build Job for testing using Selenium from windows.
 It will take screenshots and upload them into s3 bucket. These are screenshots confirming that application works.
+So it will login for me into the app and take screenshots confirming not only the build pipeline was successful but the app actually works and is deployed.
+
+# Running the pipeline
+
+ERROR:
+![Screen Shot 2024-05-25 at 12 28](https://github.com/Sequence-94/CD-AWS/assets/53806574/6592d71c-3be9-495d-bf0b-81a4ac1c22c7)
+I got a 404 error because my target group was unhealthy - It seems beanstalk could not find the "Health check path" or couldn't validate that one exists as well.
+To resolve the issue I had to downgrade my Tomcat from 10 to 8.5 because that's the one with Corretto8 and that's the jdk version I ran with all my other build projects.
+![Screen Shot 2024-05-25 at 12 32](https://github.com/Sequence-94/CD-AWS/assets/53806574/c2b7bf9e-ca4a-4298-92c1-71d2dab49375)
 
 
+![Screen Shot 2024-05-25 at 12 34](https://github.com/Sequence-94/CD-AWS/assets/53806574/3da45c7b-aabf-40dc-b010-7eec3f793c03)
 
+ERROR:
+At first I couldn't login because I needed to enable stickysessions 
+![Screen Shot 2024-05-25 at 12 34 - 2](https://github.com/Sequence-94/CD-AWS/assets/53806574/85f2a202-6942-4669-9933-dfba1bbdaa5c)
 
+Selenium Test also took a screenshot and saved it into my s3 bucket:
+![Screen Shot 2024-05-25 at 12 37](https://github.com/Sequence-94/CD-AWS/assets/53806574/3d4f12c7-b53a-457b-821d-0cdfc5e40c06)
 
+After downloading the object to my local computer i am able to view the screenshots confirming that everything worked:
 
+![Screen Shot 2024-05-25 at 12 38](https://github.com/Sequence-94/CD-AWS/assets/53806574/0b0a2187-ac84-4b9c-a144-e3570d8fad42)
 
 
 
