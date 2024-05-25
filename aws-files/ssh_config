@@ -1,0 +1,3 @@
+Host git-codecommit.*.amazonaws.com
+  User *SSH Key ID*
+  IdentityFile ~/.ssh/vpro-codecommit_rsa
